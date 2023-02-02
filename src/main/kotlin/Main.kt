@@ -9,6 +9,7 @@ import kotlin.system.exitProcess
 
 val FIR_board = FourInARow()
 var userInput = "-1"
+var win = false
 
 //checks is the input is a number and loops until a number is put in
 fun checkForNum() {
@@ -52,23 +53,31 @@ fun main() {
 
   FIR_board.printBoard()
 
-  //sets computer move
-  println("\nComputer's Turn")
-  FIR_board.setMove(GameConstants.RED, FIR_board.computerMove)
-
-  // counts turns
-  turns += 1
-
   //check for winner
   if (FIR_board.checkForWinner() == GameConstants.BLUE_WON) {
-   FIR_board.printBoard()
-      currentState = GameConstants.BLUE_WON
-  } else if (FIR_board.checkForWinner() == GameConstants.RED_WON) {
-   FIR_board.printBoard()
-      currentState = GameConstants.RED_WON
-  } else if (turns == 18) {
-   FIR_board.printBoard()
-      currentState = GameConstants.TIE
+   currentState = GameConstants.BLUE_WON
+   win = true
+  }
+
+  // counts player turn
+  turns += 1
+
+  if (!win) {
+   //sets computer move
+   println("\nComputer's Turn")
+   FIR_board.setMove(GameConstants.RED, FIR_board.computerMove)
+
+   //counts computer turn
+   turns += 1
+
+   //check for winner
+   if (FIR_board.checkForWinner() == GameConstants.RED_WON) {
+    FIR_board.printBoard()
+    currentState = GameConstants.RED_WON
+   } else if (turns == 36) {
+    FIR_board.printBoard()
+    currentState = GameConstants.TIE
+   }
   }
 
  } while (currentState == GameConstants.PLAYING)
