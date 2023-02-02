@@ -17,4 +17,4 @@ regenerated.
 Then a turn will be added to a turn counter before checking for computer win. If it did, it will print a you lose message and end. If not it continues back to the
 players turn. 
 
-If the player goes 18 times, a message for a tie will print and it will end. 
+If the turn counter hits 36, a message for a tie will print and it will end. 
