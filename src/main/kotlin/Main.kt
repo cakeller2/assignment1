@@ -54,8 +54,8 @@ fun main() {
 
   //sets computer move
   println("\nComputer's Turn")
-
   FIR_board.setMove(GameConstants.RED, FIR_board.computerMove)
+
   // counts turns
   turns += 1
 
